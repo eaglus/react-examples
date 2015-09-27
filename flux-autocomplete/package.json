@@ -1,0 +1,24 @@
+{
+  "name": "r-autocomplete",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^3.10.1",
+    "react": "^0.13.3",
+    "react-autocomplete": "^0.1.4",
+    "react-validation-mixin": "^5.2.0",
+    "reflux": "^0.2.12",
+    "reflux-state-mixin": "^0.4.2"
+  },
+  "devDependencies": {
+    "babel-core": "^5.8.25",
+    "babel-loader": "^5.3.2",
+    "webpack": "^1.12.2"
+  }
+}
