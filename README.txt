@@ -6,3 +6,9 @@ ResizeWrapper (src\resizer\ResizeWrapper.js)
 (componentWillUpdate) убирается из вёрстки, а потом ставится обратно.
 От родительского компонента требуется только обернуть блок, размеры которого будут меняться, в контрол ResizeWrapper, включить ресайзер свойством
 active у контрола ResizeWrapper, и обработать событие onSetSize по окончании изменения размеров ресайзера.
+
+Написан на es6+jsx, также используется загрузчик css, который делает уникальные имена для стилей (https://habrahabr.ru/post/276417/).
+Ещё там jquery используется для совместимости между браузерами (ie8/9) - некогда было вспоминать, что там у ie не так, как у всех.
+Смотреть можно сразу index.html - там всё уже собрано.
+Главный компонент там - https://github.com/eaglus/react-examples/blob/master/src/resizer/ResizeWrapper.js, а сама демка вот - https://github.com/eaglus/react-examples/blob/master/src/resizer/ResizeWrapperDemo.js
+Использование резайзера вот тут - https://github.com/eaglus/react-examples/blob/master/src/resizer/ResizeWrapperDemo.js#L62
