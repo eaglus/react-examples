@@ -1,0 +1,39 @@
+:local .resizer {
+    background-color: #51A4BD;
+    position: absolute;
+    opacity: 0.3;
+}
+
+:local .resizer:hover, :local .resizer.resizing {
+    background-color: #41899E;
+}
+
+:local .resizer > .corner-tip {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    cursor: se-resize;
+    right: -3px;
+    bottom: -3px;
+    background-color: #41899E;
+}
+
+:local .resizer > .right-tip {
+    position: absolute;
+    width: 5px;
+    height: 100%;
+    cursor: e-resize;
+    right: -3px;
+    top: 0;
+    background-color: #41899E;
+}
+
+:local .resizer  > .bottom-tip {
+    position: absolute;
+    width: 100%;
+    height: 6px;
+    cursor: s-resize;
+    left: 0;
+    bottom: -3px;
+    background-color: #41899E;
+}

@@ -1,0 +1,27 @@
+type NewsItem implements Node {
+  id: ID!
+  type: NewsType
+  title: String
+  content: String
+}
+
+type NewsType implements Node {
+  id: ID!
+  name: String
+}
+
+interface Node {
+  id: ID!
+}
+
+type Query {
+  viewer: Viewer
+  node(id: ID!): Node
+}
+
+type Viewer implements Node {
+  id: ID!
+  newsTypes: [NewsType]
+  newsByTypes(types: [String] = []): [NewsItem]
+  newsById(id: String): NewsItem
+}

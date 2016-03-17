@@ -1,0 +1,32 @@
+:local .root {
+  position: relative;
+  width: 1200px;
+  height: 700px;
+  margin-left: 50px;
+  padding-top: 30px;
+  overflow: auto;
+}
+
+:local .root .bigBlock {
+  margin: 12px 12px 12px 12px;
+  height: 2000px;
+}
+
+:local .resizingTd {
+  padding: 5px 10px 5px 22px;
+  border: 1px solid rgb(255,255,255);
+}
+
+:local .resizingTd.resized {
+  border-width: 2px;
+  border-style: solid;
+  border-color: #41899E;
+}
+
+:local .toggleLink {
+  margin-right: 10px;
+}
+
+:global .resizeTarget {
+  position: relative;
+}
