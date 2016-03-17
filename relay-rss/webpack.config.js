@@ -17,7 +17,7 @@ module.exports = {
 
   module: {
     loaders: [
-       { test: /\.js$/, exclude: /node_modules/, loader: "babel?plugins[]=" + path.join(__dirname, "babelRelayPlugin")},
+       { test: /\.js$/, exclude: /node_modules/, loader: "babel?plugins[]=" + path.join(__dirname, "/src/data/babelRelayPlugin")},
 
        { test: /\.css$/, loader: "style-loader!css-loader?localIdentName=[name]__[local]___[hash:base64:5]" }
     ]
