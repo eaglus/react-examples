@@ -23,7 +23,7 @@ Relay.injectNetworkLayer(
 
 const Root = React.createClass({
   render() {
-    return <div className={styles.root}>
+    return <div className={'root'}>
       <RelayRouter history={history}>
         <Route path="/" >
           <IndexRoute component={NewsListContainer} queries={queries} queryParams={['types']} />

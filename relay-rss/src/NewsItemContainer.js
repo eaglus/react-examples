@@ -4,7 +4,6 @@ import NewsItem from './NewsItem';
 
 const NewsItemWrap = React.createClass({
   render() {
-    console.log(this);
     const newsItem = _.assign({}, this.props.viewer.newsById || {}, {mode: 'full'});
     return <NewsItem {...newsItem} />;
   }

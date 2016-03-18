@@ -1,15 +1,16 @@
 import gulp from 'gulp';
 import gutil from 'gutil';
 import webpack from 'webpack';
+import WebpackDevServer from 'webpack-dev-server';
 import path from 'path';
 import schema from 'gulp-graphql';
 
 import webPackConfig from './webpack.config';
 
-let webpackCompiler, webpackWatcher;
+let webpackCompiler, webpackWatcher, devServer;
+const hotReloading = true;
 
-
-gulp.task('webpack-watch-update', ['generate-schema'], () => {
+function updateWatch() {
   if (webpackWatcher) {
     webpackWatcher.close();
   }
@@ -35,7 +36,30 @@ gulp.task('webpack-watch-update', ['generate-schema'], () => {
         source: false
     }));
   });
-});
+}
+
+function updateHMRServer() {
+  if (devServer) {
+     devServer.close();
+  } else {
+     devServer= new WebpackDevServer(webpack(webPackConfig), {
+       publicPath: webPackConfig.output.publicPath,
+       hot: true,
+       historyApiFallback: true
+     });
+  }
+
+  devServer.listen(3000, 'localhost', function (err, result) {
+    if (err) {
+      return console.log(err);
+    }
+
+    console.log('Listening at http://localhost:3000/');
+  });
+}
+
+const genSchemaCbk = hotReloading ? updateHMRServer : updateWatch;
+gulp.task('webpack-watch-update', ['generate-schema'], genSchemaCbk);
 
 // Regenerate the graphql schema and recompile the frontend code that relies on schema.json
 gulp.task('generate-schema', () => {
