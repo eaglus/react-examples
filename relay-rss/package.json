@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/.bin/gulp"  
+    "build": "env NODE_ENV=development gulp",
+    "build-prod": "env NODE_ENV=production gulp"
   },
   "author": "",
   "license": "ISC",
@@ -26,6 +27,7 @@
     "babel-loader": "^6.2.2",
     "babel-preset-es2015": "^6.5.0",
     "babel-preset-react": "^6.5.0",
+    "babel-preset-react-hmre": "^1.1.1",
     "babel-register": "^6.7.2",
     "babel-relay-plugin": "^0.7.3",
     "css-loader": "^0.23.1",

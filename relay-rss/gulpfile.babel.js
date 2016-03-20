@@ -8,7 +8,8 @@ import schema from 'gulp-graphql';
 import webPackConfig from './webpack.config';
 
 let webpackCompiler, webpackWatcher, devServer;
-const hotReloading = true;
+const isDevelopmentEnv = process.env.NODE_ENV === 'development';
+const hotReloading = !!isDevelopmentEnv;
 
 function updateWatch() {
   if (webpackWatcher) {
