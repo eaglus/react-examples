@@ -31,4 +31,9 @@ const NewsItemContainer = Relay.createContainer(NewsItemWrap, {
   }
 });
 
+function handleNewsItemEnter() {
+  console.log('handleNewsItemEnter', this);
+}
+
 export default NewsItemContainer;
+export {handleNewsItemEnter};

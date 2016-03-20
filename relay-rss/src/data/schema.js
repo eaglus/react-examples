@@ -23,7 +23,7 @@ import {
 
 import api from './mockApi';
 /**
-* @typedef {{getAllTypes: function, getAllNews: function, getNewsByTypeNames: function, getNewsItemById: function, getTypeById: function, NewsType: function, NewsItem: function, Viewer: function}}  DataApi
+* @typedef {{getAllTypes: function, getAllNews: function, getNewsByTypeNames: function, getNewsItemById: function, getTypeById: function, NewsType: function, NewsItem: function, Viewer: function, readNewsItem: function}}  DataApi
 */
 
   const {nodeInterface, nodeField} = nodeDefinitions(
@@ -84,6 +84,27 @@ import api from './mockApi';
       }
     },
     interfaces: [nodeInterface]
+  });
+
+  const GraphQLReadNewsItemMutation = mutationWithClientMutationId({
+    name: 'ReadNewsItem',
+    inputFields: {
+      newsItemId: {
+        type: new GraphQLNonNull(GraphQLString)
+      }
+    },
+    outputFields: {
+      newsItem: {
+        type: GraphQLNewsItem,
+        resolve: ({id}) => api.getNewsItemById(fromGlobalId(id).id)
+      }
+    },
+    mutateAndGetPayload: ({newsItemId}) => {
+      api.readNewsItem(newsItemId);
+      return {
+        newsItemId: newsItemId
+      };
+    }
   });
 
   const GraphQLViewer = new GraphQLObjectType({

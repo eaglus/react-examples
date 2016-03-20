@@ -32,6 +32,7 @@ function NewsItem(id, type, title, content) {
   this.type = type;
   this.title = title;
   this.content = content;
+  this.readCount = 0;
 }
 
 function generateNews(newsCount) {
@@ -73,6 +74,12 @@ function getNewsItemById(id) {
   return _.filter(newsData, (item) => item.id === id)[0];
 }
 
+function readNewsItem(id) {
+  const newsItem = getNewsItemById(id);
+  newsItem.readCount++;
+  return newsItem;
+}
+
 function getTypeById(id) {
   return _.filter(types, (type) => type.id === id)[0];
 }
@@ -81,5 +88,9 @@ function getViewer() {
   return viewer;
 }
 
-const Api = {getAllTypes, getAllNews, getNewsByTypeNames, getNewsItemById, getTypeById, getViewer, NewsType, NewsItem, Viewer};
+const Api = {
+  getAllTypes, getAllNews, getNewsByTypeNames, getNewsItemById,
+  getTypeById, getViewer, NewsType, NewsItem, Viewer, readNewsItem
+};
+
 export default Api;
