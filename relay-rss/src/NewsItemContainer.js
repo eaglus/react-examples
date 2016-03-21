@@ -1,6 +1,7 @@
 import React from 'react';
 import Relay from 'react-relay';
 import NewsItem from './NewsItem';
+import ReadNewsItemMutation from './ReadNewsItemMutation';
 
 const NewsItemWrap = React.createClass({
   render() {
@@ -31,7 +32,9 @@ const NewsItemContainer = Relay.createContainer(NewsItemWrap, {
   }
 });
 
-function handleNewsItemEnter() {
+function handleNewsItemEnter(id) {
+  const mutation = new ReadNewsItemMutation({newsItemId: id});
+  Relay.Store.commitUpdate(mutation);
   console.log('handleNewsItemEnter', this);
 }
 

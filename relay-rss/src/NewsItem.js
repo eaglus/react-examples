@@ -30,7 +30,7 @@ const NewsItem = React.createClass({
       short: renderShort
     };
 
-    //throw new Error('preved');
+    // throw new Error('preved');
 
     return modeFns[mode]();
   }

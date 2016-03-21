@@ -1,3 +1,7 @@
+type Mutation {
+  readNews(input: ReadNewsItemInput!): ReadNewsItemPayload
+}
+
 type NewsItem implements Node {
   id: ID!
   type: NewsType
@@ -17,6 +21,16 @@ interface Node {
 type Query {
   viewer: Viewer
   node(id: ID!): Node
+}
+
+input ReadNewsItemInput {
+  newsItemId: String!
+  clientMutationId: String!
+}
+
+type ReadNewsItemPayload {
+  newsItem: NewsItem
+  clientMutationId: String!
 }
 
 type Viewer implements Node {
