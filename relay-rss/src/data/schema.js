@@ -81,6 +81,11 @@ const GraphQLNewsItem = new GraphQLObjectType({
     content: {
       type: GraphQLString,
       resolve: (obj) => obj.content
+    },
+
+    readCount: {
+      type: GraphQLInt,
+      resolve: (obj) => obj.readCount
     }
   },
   interfaces: [nodeInterface]
@@ -96,14 +101,15 @@ const GraphQLReadNewsItemMutation = mutationWithClientMutationId({
   outputFields: {
     newsItem: {
       type: GraphQLNewsItem,
-      resolve: ({id}) => api.getNewsItemById(id)
+      resolve: ({newsItemIdLocal}) => api.getNewsItemById(newsItemIdLocal)
     }
   },
   mutateAndGetPayload: ({newsItemId}) => {
-    const localItemId = fromGlobalId(id).id;
+    const localItemId = fromGlobalId(newsItemId).id;
     api.readNewsItem(localItemId);
     return {
-      newsItemId: localItemId
+      newsItemId: newsItemId,
+      newsItemIdLocal: localItemId
     };
   }
 });

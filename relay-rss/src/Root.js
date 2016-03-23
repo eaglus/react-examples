@@ -28,7 +28,7 @@ const Root = React.createClass({
       <RelayRouter history={history}>
         <Route path="/" >
           <IndexRoute component={NewsListContainer} queries={queries} queryParams={['types']} />
-          <Route component={NewsItemContainer} queries={queries} path="news/:id" onEnter={handleNewsItemEnter}/>
+          <Route component={NewsItemContainer} queries={queries} path="news/:id"/>
         </Route>
       </RelayRouter>
     </div>;

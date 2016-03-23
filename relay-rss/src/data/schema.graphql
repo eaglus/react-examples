@@ -7,6 +7,7 @@ type NewsItem implements Node {
   type: NewsType
   title: String
   content: String
+  readCount: Int
 }
 
 type NewsType implements Node {

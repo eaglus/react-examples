@@ -28,7 +28,8 @@ const NewsListContainer = Relay.createContainer(NewsList, {
             id
           },
           title,
-          content
+          content,
+          readCount
         }
       }
     `

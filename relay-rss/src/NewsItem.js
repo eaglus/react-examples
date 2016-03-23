@@ -17,20 +17,18 @@ const NewsItem = React.createClass({
   },
 
   render() {
-    const {title, id, mode, content} = this.props;
+    const {title, id, mode, content, readCount} = this.props;
 
-    const renderShort = () => <Link to={"/news/" + id}>{title}</Link>;
+    const renderShort = () => <Link to={"/news/" + id}>{title} ({readCount})</Link>;
     const renderFull = () => <div>
       <h2>{title}</h2>
-      <p>{content}</p>
+      <p>{content} ({readCount})</p>
     </div>;
 
     const modeFns = {
       full: renderFull,
       short: renderShort
     };
-
-    // throw new Error('preved');
 
     return modeFns[mode]();
   }

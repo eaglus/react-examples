@@ -1,12 +1,19 @@
 import React from 'react';
 import Relay from 'react-relay';
 import NewsItem from './NewsItem';
-import ReadNewsItemMutation from './ReadNewsItemMutation';
+import ReadNewsItemMutation from './mutations/ReadNewsItemMutation';
 
 const NewsItemWrap = React.createClass({
   render() {
-    const newsItem = _.assign({}, this.props.viewer.newsById || {}, {mode: 'full'});
+    const newsById = this.props.viewer.newsById;
+    const newsItem = _.assign({}, newsById || {}, {mode: 'full'});
     return <NewsItem {...newsItem} />;
+  },
+
+  componentDidMount() {
+    const mutation = new ReadNewsItemMutation({newsItem: this.props.viewer.newsById});
+    Relay.Store.commitUpdate(mutation);
+    console.log('handleNewsItemEnter', this);
   }
 });
 
@@ -25,18 +32,13 @@ const NewsItemContainer = Relay.createContainer(NewsItemWrap, {
             id
           },
           title,
-          content
+          content,
+          readCount,
+           ${ReadNewsItemMutation.getFragment('newsItem')}
         }
       }
     `
   }
 });
 
-function handleNewsItemEnter(id) {
-  const mutation = new ReadNewsItemMutation({newsItemId: id});
-  Relay.Store.commitUpdate(mutation);
-  console.log('handleNewsItemEnter', this);
-}
-
 export default NewsItemContainer;
-export {handleNewsItemEnter};

@@ -24,15 +24,15 @@ const NewsList = React.createClass({
       router.push(newLocation);
     };
 
-    const renderNewItem = (newsItem, i) => {
+    const renderNewsItem = (newsItem, i) => {
       const withMode = _.assign({}, newsItem, {mode: 'short'});
-      return <li key={i}><NewsItem {...withMode}/></li>;
+      return <li key={i}><NewsItem {...withMode}/></li>;//TODO: NewsItemContainer сюда
     };
 
     return <div>
       <TypeSelect types={newsTypes} onToggleType={onToggleType}/>
       <ul>
-        {_.map(viewer.newsByTypes, renderNewItem)}
+        {_.map(viewer.newsByTypes, renderNewsItem)}
       </ul>
     </div>;
   }
